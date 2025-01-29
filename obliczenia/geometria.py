@@ -143,7 +143,6 @@ def rysuj(odcinek1, odcinek2):
     '''
     Funkcja rysuje oba odcinki w układzie współrzędnych i zaznacza ich punkt przecięcia
     albo zakresy nachodzenia się odcinków, o ile istnieją.
-    Zamiast wyświetlać wykres, zwraca go jako ciąg Base64.
     '''
 
     # punkty końcowe odcinka 1
@@ -152,8 +151,12 @@ def rysuj(odcinek1, odcinek2):
     # punkty końcowe odcinka 2
     x3, y3, x4, y4 = odcinek2
 
-    plt.figure(figsize=(6, 3))
+    # rysowanie odcinków
+    # plt.figure(figsize=(8, 8))
+    # plt.plot([x1, x2], [y1, y2], label="Odcinek 1", color="blue")
+    # plt.plot([x3, x4], [y3, y4], label="Odcinek 2", color="green")
 
+    plt.figure(figsize=(6, 3))
     # jeśli odcinek1 zaczyna się i kończy w tym samym punkcie
     if x1 == x2 and y1 == y2:
         plt.scatter(x1, y1, color="blue", label="Odcinek 1")
@@ -164,9 +167,10 @@ def rysuj(odcinek1, odcinek2):
     # jeśli odcinek2 zaczyna się i kończy w tym samym punkcie
     if x3 == x4 and y3 == y4:
         plt.scatter(x3, y3, color="green", label="Odcinek 2")
-    # jeśli odcinek2 zaczyna się i kończy w różnych punktach
+    # jeśli odcinek1 zaczyna się i kończy w różnych punktach
     else:
         plt.plot([x3, x4], [y3, y4], label="Odcinek 2", color="green", linewidth=8, alpha=.5)
+
 
     # zaznaczenie punktu przecięcia lub obu końców zakresu nachodzenia
     wspolrzedne = przeciecie(odcinek1, odcinek2)
@@ -202,7 +206,7 @@ def rysuj(odcinek1, odcinek2):
     plt.savefig(buf, format='png', bbox_inches='tight')
     plt.close()
     buf.seek(0)
-    image_base64 = base64.b64encode(buf.read()).decode('utf-8')
+    wykres_base64 = base64.b64encode(buf.read()).decode('utf-8')
     buf.close()
 
-    return image_base64
+    return wykres_base64

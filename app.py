@@ -32,13 +32,12 @@ def calculate():
     odcinek2 = (x3, y3, x4, y4)
 
     # Wygenerowanie wykresu i pobranie opisu przecięcia
-    plot_url, intersection_text = rysuj(odcinek1, odcinek2)
+    wykres_base64 = rysuj(odcinek1, odcinek2)
 
     # Render szablonu wynikowego
     return render_template(
         'wyniki.html',
-        plot_url=plot_url,
-        intersection_text=intersection_text
+        wykres_base64=wykres_base64
     )
 
 

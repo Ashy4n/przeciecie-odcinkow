@@ -10,8 +10,6 @@ zaznaczanie punktów przecięcia lub zakresów nachodzenia się odcinków.
 - **Python:** Wersja 3.6 lub wyższa
 - **Biblioteki Python:**
     - `matplotlib`
-    - `io`
-    - `base64`
     - `flask`
 
 ## Instalacja
@@ -31,8 +29,7 @@ cd przeciecie-odcinkow
 3. **Zainstaluj Wymagane Biblioteki:**
 
 ```bash
-pip install matplotlib
-pip install flask
+pip install flask matplotlib
 ```
 
 4. **Uruchom Aplikację:**
